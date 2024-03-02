@@ -1,0 +1,6 @@
+# ros_opencv_video
+主要使用ros的cv_bridge模块实现ros图像与OpenCV图像之间的转换，以及使用opencv的VideoCapture类实现视频的读取与显示
+
+## function
+1. opencv读取视频并转为ros图像消息发布
+2. ros订阅图像消息，并转为opencv图像显示

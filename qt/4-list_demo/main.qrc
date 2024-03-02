@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icon/apple.ico</file>
+        <file>icon/banana.ico</file>
+        <file>icon/orange.ico</file>
+        <file>icon/peach.ico</file>
+        <file>icon/strawberry.ico</file>
+    </qresource>
+</RCC>

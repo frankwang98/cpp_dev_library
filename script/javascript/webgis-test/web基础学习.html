@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML示例</title>
+    <style>
+        h1 {
+            color:red
+        }
+    </style>
+    <style>
+        #container{
+            width: 300px;
+            height: 200px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    欢迎来学习！WebGIS!
+    <p>123</p>
+    <h1>一级标题</h1>
+
+    <div id="container"></div>
+
+    <button onclick="handClick()">点击我！</button>
+    <button id="btn">事件监听</button>
+
+    <ul>
+    <li>1.hello</li>
+    <li>2.world</li>
+    </ul>
+
+    <script>
+        var i = 1
+        var str = '欢迎学习webgis'
+        console.log(i)
+        console.log(str)
+
+        i = i+1
+        console.log(i)
+
+        var arr = [1,2,3]
+        console.log(arr)
+        console.log(arr[0])
+
+        function fun(){
+            console.log("函数输出")
+        }
+        fun()
+
+        function add(x,y){
+            return x+y
+        }
+        console.log(add(2,3))
+
+        var obj = {
+            name:'xiaoming',
+            age:18,
+            sayHi: function(){
+                console.log('大家好')
+            }
+        }
+        console.log(obj.name,obj.age)
+        obj.sayHi()
+
+        function Person(n,a){
+            this.name = n
+            this.age = a
+        }
+        var p = new Person('xiaomei',16)
+        console.log(p)
+
+        function handClick(){
+            console.log('我被点击了')
+        }
+
+        document.querySelector('#btn').addEventListener('click',function(){
+            console.log('click事件被监听到了')
+        })
+    </script>
+</body>
+</html>

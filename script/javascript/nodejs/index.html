@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>车辆管理</title>
+  <style>
+    /* 添加自定义样式 */
+  </style>
+</head>
+<body>
+  <h1>车辆管理</h1>
+  
+  <table id="vehicleTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>品牌</th>
+        <th>型号</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    // 获取车辆数据并渲染到表格中
+    fetch('/api/vehicles')
+      .then(response => response.json())
+      .then(vehicles => {
+        const tableBody = document.querySelector('#vehicleTable tbody');
+        vehicles.forEach(vehicle => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${vehicle.id}</td>
+            <td>${vehicle.make}</td>
+            <td>${vehicle.model}</td>
+          `;
+          tableBody.appendChild(row);
+        });
+      })
+      .catch(error => console.error(error));
+  </script>
+</body>
+</html>

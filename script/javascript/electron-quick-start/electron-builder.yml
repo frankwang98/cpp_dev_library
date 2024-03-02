@@ -1,0 +1,6 @@
+appId: com.example.myapp
+productName: My App
+directories:
+  output: dist
+win:
+  target: nsis

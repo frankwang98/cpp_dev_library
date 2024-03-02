@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGIS学习</title>
+    <!-- 1.引入高德API -->
+    <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode:'1528c631818660fd0a689ae16d8c84d8',
+        }
+    </script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=0308341d5c092e9309d8890869454229"></script> 
+    <!-- 3.设置地图样式 -->
+    <style>
+        html,
+        body,
+        #container{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="add()">显示实时路况</button>
+    <button onclick="remove()">隐藏实时路况</button>
+
+    <script>
+        console.log(AMap)
+    </script>
+    <!-- 2.创建地图容器 -->
+    <div id="container"></div>
+    <!-- 4.加载地图 -->
+    <script>
+        var map = new AMap.Map('container',{
+            center: [114.3, 30.6],   //地图中心点
+            zoom: 10,
+            viewMode: '3D',
+            pitch: 45,
+        })
+
+        var traffic = new AMap.TileLayer.Traffic({
+            'autoRefresh': true,     //是否自动刷新，默认为false
+            'interval': 180,         //刷新间隔，默认180s
+        });
+
+        function add(){
+            map.add(traffic); //通过add方法添加图层
+        }
+
+        function remove(){
+            map.remove(traffic);
+        }
+
+        // 5.加载控件
+        AMap.plugin([
+            'AMap.ToolBar',
+            'AMap.Scale',
+            'AMap.HawkEye',
+            'AMap.MapType',
+            // 'AMap.Geolocation',
+            'AMap.ControlBar'
+        ], function(){
+            // 在图面添加工具条控件，工具条控件集成了缩放、平移、定位等功能按钮在内的组合控件
+            map.addControl(new AMap.ToolBar());
+
+            // 在图面添加比例尺控件，展示地图在当前层级和纬度下的比例尺
+            map.addControl(new AMap.Scale());
+
+            // 在图面添加鹰眼控件，在地图右下角显示地图的缩略图
+            map.addControl(new AMap.HawkEye({isOpen:true}));
+        
+            // 在图面添加类别切换控件，实现默认图层与卫星图、实施交通图层之间切换的控制
+            map.addControl(new AMap.MapType());
+        
+            // 在图面添加定位控件，用来获取和展示用户主机所在的经纬度位置
+            // map.addControl(new AMap.Geolocation());
+
+            // 罗盘
+            map.addControl(new AMap.ControlBar());
+        });
+
+        // 6.监听事件
+        map.on('click', function(event){
+            // console.log(event)
+            console.log('经度：${event.lnglat.lng}，纬度：${event.lnglat.lat}')
+        })
+    </script>
+
+</body>
+</html>

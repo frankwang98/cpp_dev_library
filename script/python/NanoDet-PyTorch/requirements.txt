@@ -1,0 +1,13 @@
+cmake
+cython
+termcolor
+numpy
+torch>=1.3
+torchvision
+tensorboard
+pycocotools
+matplotlib
+pyyaml
+scikit-build
+opencv-python
+tqdm
